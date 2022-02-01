@@ -9,10 +9,19 @@ public class Main {
         for (int i = 0; i < t; i++) {
             int n = scn.nextInt();
             boolean isPrime = true;
-            for (int divisor = 2; divisor * divisor <= n; divisor++) {
-                if (n % divisor == 0) {
-                    isPrime = false;
-                    break;
+
+            if (n == 1) {
+                isPrime = false;
+            } else if (n == 2) {
+                // isPrime = true;
+            } else if (n % 2 == 0) {
+                isPrime = false;
+            } else {
+                for (int divisor = 2; divisor * divisor <= n; divisor += 2) {
+                    if (n % divisor == 0) {
+                        isPrime = false;
+                        break;
+                    }
                 }
             }
             if (isPrime) {
@@ -26,3 +35,4 @@ public class Main {
 
 // Learnings:
 // use divisor * divisor <= n instead of divisor <= Math.sqrt(n)
+// if n > 2 and n not even, then only check odd factors

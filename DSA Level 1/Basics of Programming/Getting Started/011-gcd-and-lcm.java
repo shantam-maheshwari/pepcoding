@@ -10,13 +10,12 @@ public class Main {
         int product = num1 * num2;
 
         // Euclid's algorithm
-        int rem = num1 % num2;
-        while (rem != 0) {
+        while (num2 != 0) {
+            int rem = num1 % num2;
             num1 = num2;
             num2 = rem;
-            rem = num1 % num2;
         }
-        int gcd = num2;
+        int gcd = num1;
 
         int lcm = product / gcd;
 

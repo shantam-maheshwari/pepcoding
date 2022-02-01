@@ -11,25 +11,26 @@ public class Main {
             A[i] = scn.nextInt();
         }
 
-        int largest = A[0];
-        int smallest = A[0];
-        int secondLargest = 0;
-        int secondSmallest = 0;
+        int max1 = A[0];
+        int max2 = Integer.MIN_VALUE;
+        int min1 = A[0];
+        int min2 = Integer.MAX_VALUE;
 
         for (int i = 1; i < n; i++) {
-            if (A[i] > largest) {
-                secondLargest = largest;
-                largest = A[i];
-            } else if (A[i] > secondLargest) {
-                secondLargest = A[i];
-            } else if (A[i] < smallest) {
-                secondSmallest = smallest;
-                smallest = A[i];
-            } else if (A[i] < secondSmallest) {
-                secondSmallest = A[i];
+            if (A[i] > max1) {
+                max2 = max1;
+                max1 = A[i];
+            } else if (A[i] > max2) {
+                max2 = A[i];
+            }
+            if (A[i] < min1) {
+                min2 = min1;
+                min1 = A[i];
+            } else if (A[i] < min2) {
+                min2 = A[i];
             }
         }
-        System.out.println(secondLargest + " " + secondSmallest);
+        System.out.println(max2 + " " + min2);
     }
 }
 
