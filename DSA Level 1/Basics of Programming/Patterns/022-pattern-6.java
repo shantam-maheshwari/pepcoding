@@ -6,20 +6,41 @@ public class Main {
         Scanner scn = new Scanner(System.in);
         int n = scn.nextInt();
 
-        for (int i = 1; i <= n; i++) {
-            // *
-            for (int j = 1; j <= Math.abs((n + 1) / 2 - i) + 1; j++) {
-                System.out.print("*\t");
+        String pattern = "";
+        // upper half
+        int starLength = n / 2 + 1;
+        int spaceLength = 1;
+        for (int i = 1; i <= n / 2 + 1; i++) {
+            for (int j = 1; j <= starLength; j++) {
+                pattern += "*\t";
             }
-            // \t
-            for (int j = 1; j <= n - 2 * Math.abs((n + 1) / 2 - i); j++) {
-                System.out.print("\t");
+            for (int j = 1; j <= spaceLength; j++) {
+                pattern += "\t";
             }
-            // *
-            for (int j = 1; j <= Math.abs((n + 1) / 2 - i) + 1; j++) {
-                System.out.print("*\t");
+            for (int j = 1; j <= starLength; j++) {
+                pattern += "*\t";
             }
-            System.out.println();
+            pattern += "\n";
+            starLength--;
+            spaceLength += 2;
         }
+        // lower half
+        starLength = 2;
+        spaceLength = n - 2;
+        for (int i = n / 2 + 2; i <= n; i++) {
+            for (int j = 1; j <= starLength; j++) {
+                pattern += "*\t";
+            }
+            for (int j = 1; j <= spaceLength; j++) {
+                pattern += "\t";
+            }
+            for (int j = 1; j <= starLength; j++) {
+                pattern += "*\t";
+            }
+            pattern += "\n";
+            starLength++;
+            spaceLength -= 2;
+        }
+        System.out.println(pattern);
     }
 }

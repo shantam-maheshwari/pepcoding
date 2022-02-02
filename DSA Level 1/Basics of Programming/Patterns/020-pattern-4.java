@@ -6,14 +6,17 @@ public class Main {
         Scanner scn = new Scanner(System.in);
         int n = scn.nextInt();
 
-        for (int i = n; i >= 1; i--) {
-            for (int j = i + 1; j <= n; j++) {
-                System.out.print("\t");
+        String pattern = "";
+        int leftSpace = 0;
+        for (int i = 1; i <= n; i++, leftSpace++) {
+            for (int j = 1; j <= leftSpace; j++) {
+                pattern += "\t";
             }
-            for (int j = 1; j <= i; j++) {
-                System.out.print("*\t");
+            for (int j = 1; j <= n - leftSpace; j++) {
+                pattern += "*\t";
             }
-            System.out.println();
+            pattern += "\n";
         }
+        System.out.println(pattern);
     }
 }

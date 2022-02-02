@@ -6,12 +6,15 @@ public class Main {
         Scanner scn = new Scanner(System.in);
         int n = scn.nextInt();
 
-        for (int i = n - 1; i >= 0; i--) {
-            for (int j = 1; j <= i; j++) {
-                System.out.print("\t");
+        String pattern = "";
+        int spaceLength = n - 1;
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= spaceLength; j++) {
+                pattern += "\t";
             }
-            System.out.println("*");
+            pattern += "*\n";
+            spaceLength--;
         }
-
+        System.out.println(pattern);
     }
 }

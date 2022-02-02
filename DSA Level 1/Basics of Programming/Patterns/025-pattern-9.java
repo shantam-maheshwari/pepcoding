@@ -6,27 +6,17 @@ public class Main {
         Scanner scn = new Scanner(System.in);
         int n = scn.nextInt();
 
+        String pattern = "";
         for (int i = 1; i <= n; i++) {
-            // \t
-            // y = 2 - |3 - x|
-            for (int j = 1; j <= (n - 1) / 2 - Math.abs((n + 1) / 2 - i); j++) {
-                System.out.print("\t");
-            }
-
-            // *
-            System.out.print("*\t");
-
-            if (i != (n + 1) / 2) {
-                // \t
-                // y = 2 * |3 - x| - 1
-                for (int j = 1; j <= 2 * Math.abs((n + 1) / 2 - i) - 1; j++) {
-                    System.out.print("\t");
+            for (int j = 1; j <= n; j++) {
+                if (i == j || i + j == n + 1) {
+                    pattern += "*\t";
+                } else {
+                    pattern += "\t";
                 }
-
-                // *
-                System.out.print("*");
             }
-            System.out.println();
+            pattern += "\n";
         }
+        System.out.println(pattern);
     }
 }

@@ -6,32 +6,28 @@ public class Main {
         Scanner scn = new Scanner(System.in);
         int n = scn.nextInt();
 
-        // outerSpace = 2 1 0 1 2
-        // innerSpace = -1 1 3 1 -1
-        int outerSpace = n / 2;
-        int innerSpace = -1;
-
+        String pattern = "";
+        int leftSpaceLength = n / 2;
+        int middleSpaceLength = -1;
         for (int i = 1; i <= n; i++) {
-            for (int j = 1; j <= outerSpace; j++) {
-                System.out.print("\t");
+            for (int j = 1; j <= leftSpaceLength; j++) {
+                pattern += "\t";
             }
-            System.out.print("*\t");
-            if (1 < i && i < n) {
-                for (int j = 1; j <= innerSpace; j++) {
-                    System.out.print("\t");
+            if (!(i == 1 || i == n)) {
+                pattern += "*\t";
+                for (int j = 1; j <= middleSpaceLength; j++) {
+                    pattern += "\t";
                 }
-                System.out.print("*");
             }
-
+            pattern += "*\n";
             if (i <= n / 2) {
-                outerSpace--;
-                innerSpace += 2;
+                leftSpaceLength--;
+                middleSpaceLength += 2;
             } else {
-                outerSpace++;
-                innerSpace -= 2;
+                leftSpaceLength++;
+                middleSpaceLength -= 2;
             }
-            System.out.println();
         }
-
+        System.out.println(pattern);
     }
 }

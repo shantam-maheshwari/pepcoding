@@ -6,31 +6,34 @@ public class Main {
         Scanner scn = new Scanner(System.in);
         int n = scn.nextInt();
 
-        int spaceLength = (n - 1) / 2;
-        int rowVal = 1;
-        for (int rowNum = 1; rowNum <= n; rowNum++) {
-            for (int i = 1; i <= spaceLength; i++) {
-                System.out.print("\t");
+        String pattern = "";
+        int leftSpaceLength = n / 2;
+        int numbersLength = 1;
+        int i = 1;
+        for (int row = 1; row <= n; row++) {
+            for (int j = 1; j <= leftSpaceLength; j++) {
+                pattern += "\t";
             }
-
-            int colVal = rowVal;
-            for (int colNum = 1; colNum <= 2 * rowVal - 1; colNum++) {
-                System.out.print(colVal + "\t");
-                if (colNum < rowVal) {
-                    colVal++;
+            int number = i;
+            for (int j = 1; j <= numbersLength; j++) {
+                pattern += number + "\t";
+                if (j <= numbersLength / 2) {
+                    number++;
                 } else {
-                    colVal--;
+                    number--;
                 }
             }
-            System.out.println();
-
-            if (rowNum <= (n - 1) / 2) {
-                spaceLength--;
-                rowVal++;
+            pattern += "\n";
+            if (row <= n / 2) {
+                leftSpaceLength--;
+                numbersLength += 2;
+                i++;
             } else {
-                spaceLength++;
-                rowVal--;
+                leftSpaceLength++;
+                numbersLength -= 2;
+                i--;
             }
         }
+        System.out.println(pattern);
     }
 }
